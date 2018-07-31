@@ -33,6 +33,7 @@ public class getIpAddr {
                 ip = ip.substring(0,ip.indexOf(","));
             }
         }
+        System.out.println(ip);
         IpAddr=ip;
     }
 }

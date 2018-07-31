@@ -98,7 +98,7 @@ export default {
       $(document).ready(function () {
         // your code here
         $.ajax({
-          url: 'http://localhost:8080/getip',
+          url: 'http://192.168.228.1:8011/getip',
           type: 'get',
           async: true,
           data: null,
