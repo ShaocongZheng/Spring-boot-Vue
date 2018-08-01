@@ -16,4 +16,10 @@ public class getIpAddress {
         a.getIpAddr(request);
         return a;
     }
+    @RequestMapping(value = "/get")
+    public Object get(HttpServletRequest request) {
+        getIpAddr a=new getIpAddr();
+        a.getIpAddr(request);
+        return a;
+    }
 }
