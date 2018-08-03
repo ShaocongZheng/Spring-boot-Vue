@@ -1,9 +1,9 @@
 <template>
     <el-container>
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1', '3']">
+        <el-menu :default-openeds="['']">
           <el-submenu index="1">
-            <template slot="title"><i class="el-icon-message"></i>导航一</template>
+            <template slot="title"><i class="el-icon-message"></i>Home</template>
             <el-menu-item-group>
               <template slot="title">分组一</template>
               <el-menu-item index="1-1">选项1</el-menu-item>
@@ -18,7 +18,7 @@
             </el-submenu>
           </el-submenu>
           <el-submenu index="2">
-            <template slot="title"><i class="el-icon-menu"></i>导航二</template>
+            <template slot="title"><i class="el-icon-picture"></i>Photo</template>
             <el-menu-item-group>
               <template slot="title">分组一</template>
               <el-menu-item index="2-1">选项1</el-menu-item>
@@ -33,7 +33,7 @@
             </el-submenu>
           </el-submenu>
           <el-submenu index="3">
-            <template slot="title"><i class="el-icon-setting"></i>导航三</template>
+            <template slot="title"><i class="el-icon-edit"></i>Records</template>
             <el-menu-item-group>
               <template slot="title">分组一</template>
               <el-menu-item index="3-1">选项1</el-menu-item>
@@ -50,9 +50,9 @@
         </el-menu>
       </el-aside>
       <el-container>
-        <el-header style="text-align: right; font-size: 12px">
+        <el-header style="text-align: left; font-size: 12px">
           <el-dropdown>
-            <i class="el-icon-setting" style="margin-right: 15px"></i>
+            <i class="el-icon-setting" style="margin-left: 15px"></i>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>查看</el-dropdown-item>
               <el-dropdown-item>新增</el-dropdown-item>
@@ -63,14 +63,22 @@
         </el-header>
 
         <el-main>
-          <el-table :data="tableData">
-            <el-table-column prop="date" label="日期" width="140">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="120">
-            </el-table-column>
-            <el-table-column prop="address" label="地址">
-            </el-table-column>
-          </el-table>
+          <!--<el-table :data="tableData">-->
+            <!--<el-table-column prop="date" label="日期" width="140">-->
+            <!--</el-table-column>-->
+            <!--<el-table-column prop="name" label="姓名" width="120">-->
+            <!--</el-table-column>-->
+            <!--<el-table-column prop="address" label="地址">-->
+            <!--</el-table-column>-->
+          <!--</el-table>-->
+          <el-carousel :interval="4000" type="card" height="400px">
+            <el-carousel-item v-for="item in 4" :key="item" >
+              <!--<h3>{{ item }}</h3>-->
+            </el-carousel-item>
+          </el-carousel>
+          <el-card style="position: relative" id="msg">
+            {{photo_message}}
+          </el-card>
         </el-main>
       </el-container>
     </el-container>
@@ -80,19 +88,22 @@
 export default {
   name: 'home',
   data () {
-    const item = {
-      date: '2016-05-02',
-      name: '王小虎',
-      address: '上海市普陀区金沙江路 1518 弄'
-    }
+    // const item = {
+    //   date: '2016-05-02',
+    //   name: '王小虎',
+    //   address: '上海市普陀区金沙江路 1518 弄'
+    // }
     return {
-      tableData: Array(2).fill(item)
+      // tableData: Array(2).fill(item)
     }
+  },
+  mounted: function () {
   }
 }
 </script>
 
 <style scoped>
+
   .el-header {
     background-color: #B3C0D1;
     color: #333;
@@ -101,5 +112,47 @@ export default {
 
   .el-aside {
     color: #333;
+  }
+  /*
+    卡片式图片
+  */
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+  }
+
+  .el-carousel__item:nth-child(2n){
+    /*background-color: #99a9bf;*/
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .el-carousel__item:nth-child(2n+1) {
+    /*background-color: #d3dce6;*/
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .el-carousel__item:nth-child(5) {
+    background-image: url('../assets/images/451533280154_.pic_hd.jpg');
+  }
+  .el-carousel__item:nth-child(6) {
+    background-image: url('../assets/images/461533280155_.pic_hd.jpg');
+  }
+  .el-carousel__item:nth-child(3) {
+    background-image: url('../assets/images/471533280156_.pic_hd.jpg');
+    transform: rotate(90deg);
+    -ms-transform:rotate(90deg); /* Internet Explorer */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+    -o-transform:rotate(90deg); /* Opera */
+  }
+  .el-carousel__item:nth-child(4) {
+    background-image: url('../assets/images/481533280157_.pic_hd.jpg');
+    transform: rotate(90deg);
+    -ms-transform:rotate(90deg); /* Internet Explorer */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+    -o-transform:rotate(90deg); /* Opera */
   }
 </style>
